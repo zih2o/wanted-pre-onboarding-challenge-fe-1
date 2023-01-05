@@ -38,6 +38,24 @@
 - 한 화면 내에서 Todo List와 개별 Todo의 상세를 확인할 수 있도록 해주세요.
 
   - [x] 새로고침을 했을 때 현재 상태가 유지되어야 합니다.
-  - [x] 개별 Todo를 조회 순서에 따라 페이지 뒤로가기를 통하여 조회할 수 있도록 해주세요.
+  - [ ] 개별 Todo를 조회 순서에 따라 페이지 뒤로가기를 통하여 조회할 수 있도록 해주세요.
   - [x] 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현해주세요
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
+  
+## 3. 상세화면
+- 메인페이지
+<img src="https://user-images.githubusercontent.com/85221728/210736523-f0ef9a21-1871-4914-989c-916271f46dce.png">
+- TODO 수정
+<img src="https://user-images.githubusercontent.com/85221728/210738636-28334638-6daa-47ca-b109-32b9919a3000.png">
+- 로그인 페이지
+<img src="https://user-images.githubusercontent.com/85221728/210737626-fe3f73b6-e03d-4e53-9a3e-4c178e2106a5.png">
+<img src="https://user-images.githubusercontent.com/85221728/210738493-fbe4d0e5-5f18-4e0e-a8b9-ac5e9793e6d6.png">
+- 회원가입 페이지
+<img src="https://user-images.githubusercontent.com/85221728/210738326-5440c429-2a8a-402e-9e51-5186e6d20ec4.png">
+<img src="https://user-images.githubusercontent.com/85221728/210737832-04f58b7c-d603-4be3-84b6-286add21fa5f.png">
+
+## 4. 실행방법
+```
+npm install
+npm run dev
+```
