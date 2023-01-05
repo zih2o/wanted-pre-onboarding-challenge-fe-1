@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { api } from '../utils/api';
@@ -10,7 +12,18 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: 'all' });
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0) {
+      ref.current.disabled = false;
+    } else {
+      ref.current.disabled = true;
+    }
+  }, [errors]);
+
   const onSubmit = async (data) => {
     try {
       const response = await api.post('/users/login', {
@@ -26,9 +39,9 @@ export default function Login() {
         alert('아이디나 비밀번호가 일치하지 않습니다.');
         return;
       }
-      console.log(error);
     }
   };
+
   return (
     <div className="w-1/2 h-1/2 rounded-xl translate-x-[50%] translate-y-[50%] bg-slate-100 overflow-hidden shadow-xl">
       <form
@@ -65,7 +78,9 @@ export default function Login() {
             <p className="text-red-600 text-sm">비밀번호를 입력해주세요.</p>
           )}
         </div>
-        <button className="py-2">Log In</button>
+        <button ref={ref} className="py-2">
+          Log In
+        </button>
       </form>
 
       <Link to="/auth/signup" className="fixed right-0 top-0 m-2">

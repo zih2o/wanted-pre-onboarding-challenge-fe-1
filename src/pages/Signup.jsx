@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { api } from '../utils/api';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 export default function Signup() {
   const {
@@ -9,7 +11,18 @@ export default function Signup() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: 'all' });
+
+  const ref = useRef(null);
+  useEffect(() => {
+    if (Object.keys(errors).length === 0) {
+      ref.current.disabled = false;
+    } else {
+      ref.current.disabled = true;
+    }
+    console.log(errors);
+  }, [errors]);
+
   const onSubmit = async (data) => {
     try {
       const response = await api.post('/users/create', {
@@ -23,7 +36,6 @@ export default function Signup() {
       if (error.response.status === 409) {
         alert('이미 존재하는 이메일입니다.');
       }
-      console.log(error);
     }
   };
   return (
@@ -85,7 +97,9 @@ export default function Signup() {
             <p className="text-red-600 text-sm">{errors.cpassword.message}</p>
           )}
         </div>
-        <button className="mt-4 px-4 py-2 w-full">Sign Up</button>
+        <button ref={ref} className={'mt-4 px-4 py-2 w-full '}>
+          Sign Up
+        </button>
       </form>
       <Link to="/auth/login" className="fixed right-0 top-0 m-2">
         <button className=" bg-slate-600">LOG IN</button>
