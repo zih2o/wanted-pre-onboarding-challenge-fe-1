@@ -1,4 +1,4 @@
-# Wanted 23년 1월 FE 사전과제
+# Wanted 프리온보딩 23년 1월 FE 사전과제
 ## 1. 기술 스택
 <div align="center">
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
