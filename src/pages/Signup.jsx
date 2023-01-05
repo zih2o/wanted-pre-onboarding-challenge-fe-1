@@ -11,7 +11,7 @@ export default function Signup() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ mode: 'all' });
+  } = useForm({ mode: 'onChange' });
 
   const ref = useRef(null);
   useEffect(() => {
@@ -20,8 +20,7 @@ export default function Signup() {
     } else {
       ref.current.disabled = true;
     }
-    console.log(errors);
-  }, [errors]);
+  }, [Object.keys(errors).length]);
 
   const onSubmit = async (data) => {
     try {
@@ -44,7 +43,7 @@ export default function Signup() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col justify-between items-center w-full h-full p-10"
       >
-        <div className="flex flex-col items-center w-full">
+        <div className="relative flex flex-col items-center w-full">
           <label htmlFor="email" className="mb-2 text-slate-800 font-bold">
             E-MAIL
           </label>
@@ -57,10 +56,12 @@ export default function Signup() {
             className="w-full"
           />
           {errors.email && (
-            <p className="text-red-600 text-sm">이메일 형식이 맞지 않습니다.</p>
+            <p className="absolute -bottom-6 text-red-600 text-sm">
+              이메일 형식이 맞지 않습니다.
+            </p>
           )}
         </div>
-        <div className="flex flex-col items-center w-full">
+        <div className="relative flex flex-col items-center w-full">
           <label htmlFor="pw" className="mb-2 text-slate-800 font-bold">
             PASSWORD
           </label>
@@ -71,12 +72,12 @@ export default function Signup() {
             className="w-full"
           />
           {errors.password && (
-            <p className="text-red-600 text-sm">
+            <p className="absolute -bottom-6 text-red-600 text-sm">
               비밀번호는 8자 이상이어야 합니다.
             </p>
           )}
         </div>
-        <div className="flex flex-col items-center w-full">
+        <div className="relative flex flex-col items-center w-full">
           <label htmlFor="cpw" className="mb-2 text-slate-800 font-bold">
             PASSWORD CONFIRM
           </label>
@@ -94,7 +95,9 @@ export default function Signup() {
             className="w-full"
           />
           {errors.cpassword && (
-            <p className="text-red-600 text-sm">{errors.cpassword.message}</p>
+            <p className="absolute -bottom-6 text-red-600 text-sm">
+              {errors.cpassword.message}
+            </p>
           )}
         </div>
         <button ref={ref} className={'mt-4 px-4 py-2 w-full '}>

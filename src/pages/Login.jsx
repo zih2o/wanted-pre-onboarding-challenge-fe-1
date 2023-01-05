@@ -22,7 +22,7 @@ export default function Login() {
     } else {
       ref.current.disabled = true;
     }
-  }, [errors]);
+  }, [Object.keys(errors).length]);
 
   const onSubmit = async (data) => {
     try {
@@ -48,7 +48,7 @@ export default function Login() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col justify-between h-full p-10"
       >
-        <div className="flex flex-col items-center">
+        <div className="relative flex flex-col items-center">
           <label htmlFor="email" className="mb-2 text-slate-800 font-bold">
             E-MAIL
           </label>
@@ -61,10 +61,12 @@ export default function Login() {
             className="w-full"
           />
           {errors.email && (
-            <p className="text-red-600 text-sm">이메일 형식이 맞지 않습니다.</p>
+            <p className="absolute -bottom-6 text-red-600 text-sm">
+              이메일 형식이 맞지 않습니다.
+            </p>
           )}
         </div>
-        <div className="flex flex-col items-center">
+        <div className="relative flex flex-col items-center">
           <label htmlFor="pw" className="mb-2 text-slate-800 font-bold">
             PASSWORD
           </label>
@@ -75,7 +77,9 @@ export default function Login() {
             className="w-full"
           />
           {errors.password && (
-            <p className="text-red-600 text-sm">비밀번호를 입력해주세요.</p>
+            <p className="absolute -bottom-6 text-red-600 text-sm">
+              비밀번호를 입력해주세요.
+            </p>
           )}
         </div>
         <button ref={ref} className="py-2">

@@ -96,7 +96,9 @@ export default function Todos() {
                 className="w-24"
               />
               {errors.title && (
-                <p className="text-red-600 text-sm">제목을 입력해주세요.</p>
+                <p className="fixed bottom-0 text-red-600 text-sm">
+                  제목을 입력해주세요.
+                </p>
               )}
             </div>
             <div className="flex flex-col items-center justify-center">
@@ -109,11 +111,13 @@ export default function Todos() {
                 className="w-96"
               />
               {errors.content && (
-                <p className="text-red-600 text-sm">내용을 입력해주세요.</p>
+                <p className="fixed bottom-0 text-red-600 text-sm">
+                  내용을 입력해주세요.
+                </p>
               )}
             </div>
           </div>
-          <button className="">ADD</button>
+          <button className="px-6 py-0">ADD</button>
         </form>
       </div>
       {isOpen && (
