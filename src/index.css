@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply m-0 p-0;
+}
+body {
+  @apply bg-slate-800;
+}
+
+#root {
+  @apply w-full h-screen;
+}
+
+button {
+  @apply mx-1 px-2 rounded-md bg-slate-800 text-slate-50 hover:scale-105 transition-all;
+}
+
+input {
+  @apply mx-2 px-2 h-8 bg-slate-50 rounded-sm focus:outline-none focus:ring-gray-800 focus:ring-2;
+}
