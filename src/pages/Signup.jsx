@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { api } from '../utils/api';
 
@@ -19,7 +20,7 @@ export default function Signup() {
       alert(response.data.message);
       window.location.replace('/');
     } catch (error) {
-      if (error.status === 409) {
+      if (error.response.status === 409) {
         alert('이미 존재하는 이메일입니다.');
       }
       console.log(error);
@@ -86,6 +87,9 @@ export default function Signup() {
         </div>
         <button className="mt-4 px-4 py-2 w-full">Sign Up</button>
       </form>
+      <Link to="/auth/login" className="fixed right-0 top-0 m-2">
+        <button className=" bg-slate-600">LOG IN</button>
+      </Link>
     </div>
   );
 }
